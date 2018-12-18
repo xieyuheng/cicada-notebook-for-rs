@@ -7,4 +7,4 @@ interactive UI of [cicada-language](https://github.com/xieyuheng/cicada)
 - install deps `npm install`
 - offline useage `npx webpack-dev-server`
 
-[Online Demo ^-^/](https://cicada-notebook.surge.sh)
+[Online Demo (at surge.sh)](https://cicada-notebook.surge.sh)
