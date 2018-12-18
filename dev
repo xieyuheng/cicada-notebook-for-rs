@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+release () {
+    rm -rf dist
+    yarn exec webpack
+    cp src/docs.html dist/
+}
+
+main () {
+    for TASK in $@
+    do
+        $TASK
+    done
+}
+
+main $@

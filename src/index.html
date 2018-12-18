@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>NOTEBOOK | CICADA</title>
+    </head>
+    <body>
+        <noscript>cicada can not run without js</noscript>
+        <div id="note-book">
+            <div id="nav-bar">
+                <div id="note-href-list">
+                </div>
+            </div>
+            <div id="content">
+                <div id="menu-bar">
+                    <button class="button" id="toc-button">
+                        #
+                    </button>
+                    <button class="button" id="load-button">
+                        LOAD
+                    </button>
+                    <input id="load-input"
+                           type="file"
+                           accept=".cic"
+                           style="display: none;"
+                    />
+                    <button class="button" id="save-button">
+                        SAVE
+                    </button>
+                    <button class="button" id="docs-button">
+                        <a href="docs.html">DOCS</a>
+                    </button>
+                    <input id="title"
+                           spellcheck="false"
+                           type="text"
+                           placeholder="<title>.cic" />
+                </div>
+                <div id="note-list"></div>
+            </div>
+        </div>
+    </body>
+
+    <style>
+     #content {
+         margin-left: 0%;
+         transition: margin-left .5s ease .2s;
+     }
+
+     #nav-bar {
+         width: 0%;
+         transition: width .5s ease .2s;
+     }
+
+     .toc #content {
+         margin-left: 18%;
+         transition: margin-left .5s ease .2s;
+     }
+
+     .toc #nav-bar {
+         width: 18%;
+         transition: width .5s ease .2s;
+     }
+
+     #nav-bar {
+         position: fixed;
+         left: 0;
+         top: 0;
+         bottom: 0;
+         overflow-y: auto;
+         border: 0px;
+         font-size: 0.875em;
+         text-align: center;
+     }
+
+     #menu-bar {
+         position: sticky;
+         top: 0;
+     }
+
+     #title {
+         font-size: 1em;
+         border: 0px;
+         border-left: 2px dashed;
+         background-color: white;
+         padding-left: 0.2em;
+         padding-right: 0.2em;
+         width: available;
+     }
+
+     .button {
+         font-size: 1em;
+         border: 0px;
+         background-color: white;
+     }
+
+     .note .button {
+         float: right;
+     }
+
+     a {
+         text-decoration: none;
+         color: black;
+     }
+
+     a:visited {
+         color: black;
+     }
+
+     .input {
+         font-size: 1em;
+         border: 0px;
+         border-left: 2px solid;
+         width: 97%;
+     }
+
+     .output {
+         font-size: 1em;
+         border: 0px;
+         border-left: 2px solid #bbb;
+         overflow-x: auto;
+     }
+
+     .headline {
+         font-size: 1em;
+         border: 0px;
+     }
+    </style>
+</html>

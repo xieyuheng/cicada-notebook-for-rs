@@ -1,0 +1,20 @@
+{
+    "name": "cicada-notebook",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "cicada-wasm": "^0.1.1",
+        "file-saver": "^2.0.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.1.6",
+        "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+        "@babel/preset-env": "^7.1.6",
+        "babel-loader": "^8.0.4",
+        "html-webpack-plugin": "^3.2.0",
+        "source-map-loader": "^0.2.4",
+        "webpack": "^4.27.1",
+        "webpack-cli": "^3.1.2",
+        "webpack-dev-server": "^3.1.10"
+    }
+}
