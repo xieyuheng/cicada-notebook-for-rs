@@ -9,4 +9,4 @@ interactive UI of [cicada-language](https://github.com/xieyuheng/cicada)
 
 [Online Demo (at surge.sh)](https://cicada-notebook.surge.sh)
 
-[![dom-dom](./dom-dom.gif)]
+![dom-dom](./dom-dom.gif)
