@@ -2,8 +2,9 @@
 
 release () {
     rm -rf dist
-    yarn exec webpack
+    npx webpack
     cp src/docs.html dist/
+    npx surge dist cicada-notebook.surge.sh
 }
 
 main () {
