@@ -6,61 +6,61 @@ import { useState } from "react";
 import "./index.css";
 
 let InputBuffer = (props: {
-    focus_p: boolean
-    value: string
-    onChange: (event: any) => void
-    onKeyDown: (event: any) => void
+  focus_p: boolean
+  value: string
+  onChange: (event: any) => void
+  onKeyDown: (event: any) => void
 }) => {
-    return <>
-        <textarea
-            className = "InputBuffer"
-            autoFocus = {props.focus_p}
-            value = {props.value}
-            onChange = {props.onChange}
-            onKeyDown = {props.onKeyDown}
-        />
-    </>
+  return <>
+    <textarea
+      className = "InputBuffer"
+      autoFocus = {props.focus_p}
+      value = {props.value}
+      onChange = {props.onChange}
+      onKeyDown = {props.onKeyDown}
+    />
+  </>
 };
 
 let OutputBuffer = (props: {
-    value: string
+  value: string
 }) => {
-    return <>
-        <textarea
-            className = "OutputBuffer"
-            value = {props.value}
-        />
-    </>
+  return <>
+    <textarea
+      className = "OutputBuffer"
+      value = {props.value}
+    />
+  </>
 };
 
 let Note = (props: {
-    headline: string
-    focus_p: boolean
-    input: string
-    output: string
-    onChange: (event: any) => void
-    onKeyDown: (event: any) => void
+  headline: string
+  focus_p: boolean
+  input: string
+  output: string
+  onChange: (event: any) => void
+  onKeyDown: (event: any) => void
 }) => {
-    let outputBuffer = <></>;
-    if (props.output != "") {
-        outputBuffer = <OutputBuffer value = {props.output} />;
-    }
-    let inputBuffer =
-        <InputBuffer
-            focus_p = {props.focus_p}
-            value = {props.input}
-            onChange = {props.onChange}
-            onKeyDown = {props.onKeyDown}
-        />;
-    return <>
-        <div className = "Note">
-            <hr />
-            <h3>{props.headline}</h3>
-            {inputBuffer}
-            {outputBuffer}
-            <hr />
-        </div>
-    </>
+  let outputBuffer = <></>;
+  if (props.output != "") {
+    outputBuffer = <OutputBuffer value = {props.output} />;
+  }
+  let inputBuffer =
+    <InputBuffer
+      focus_p = {props.focus_p}
+      value = {props.input}
+      onChange = {props.onChange}
+      onKeyDown = {props.onKeyDown}
+    />;
+  return <>
+    <div className = "Note">
+      <hr />
+      <h3>{props.headline}</h3>
+      {inputBuffer}
+      {outputBuffer}
+      <hr />
+    </div>
+  </>
 };
 
 const WELCOME_MESSAGE = `\
@@ -71,71 +71,71 @@ const WELCOME_MESSAGE = `\
 `;
 
 let Root = (props: {
-    cicada: any
+  cicada: any
 }) => {
-    let [module, setModule] = useState (
-        props.cicada.CicadaModule.new ());
-    let [noteList, setNoteList] = useState ([
-        { input: WELCOME_MESSAGE, output: "" },
-    ]);
+  let [module, setModule] = useState (
+    props.cicada.CicadaModule.new ());
+  let [noteList, setNoteList] = useState ([
+    { input: WELCOME_MESSAGE, output: "" },
+  ]);
 
-    let [current, setCurrent] = useState (0);
+  let [current, setCurrent] = useState (0);
 
-    let onKeyDown = (index: number) => (event: any) => {
-        if (event.key == "Enter" && event.ctrlKey) {
-            let module = props.cicada.CicadaModule.new ();
-            let length = noteList.length;
-            let list = noteList.slice (0, length);
-            list.forEach ((note, i) => {
-                if (i <= index) {
-                    list [index] .output = module.run (note.input);
-                }
-            });
-            setNoteList (list);
+  let onKeyDown = (index: number) => (event: any) => {
+    if (event.key == "Enter" && event.ctrlKey) {
+      let module = props.cicada.CicadaModule.new ();
+      let length = noteList.length;
+      let list = noteList.slice (0, length);
+      list.forEach ((note, i) => {
+        if (i <= index) {
+          list [index] .output = module.run (note.input);
         }
-        if (event.key == "Enter" && event.altKey) {
-            let module = props.cicada.CicadaModule.new ();
-            let length = noteList.length;
-            setCurrent (index + 1);
-            let list = noteList.slice (0, index + 1);
-            let succ = noteList.slice (index + 1, length);
-            list.forEach ((note, i) => {
-                if (i <= index) {
-                    list [index] .output = module.run (note.input);
-                }
-            });
-            list.push ({ input: "", output: "" });
-            setNoteList (list.concat (succ));
+      });
+      setNoteList (list);
+    }
+    if (event.key == "Enter" && event.altKey) {
+      let module = props.cicada.CicadaModule.new ();
+      let length = noteList.length;
+      setCurrent (index + 1);
+      let list = noteList.slice (0, index + 1);
+      let succ = noteList.slice (index + 1, length);
+      list.forEach ((note, i) => {
+        if (i <= index) {
+          list [index] .output = module.run (note.input);
         }
-    };
+      });
+      list.push ({ input: "", output: "" });
+      setNoteList (list.concat (succ));
+    }
+  };
 
-    let onChange = (index: number) => (event: any) => {
-        let length = noteList.length;
-        let list = noteList.slice (0, length);
-        list [index] .input = event.target.value;
-        setNoteList (list);
-    };
+  let onChange = (index: number) => (event: any) => {
+    let length = noteList.length;
+    let list = noteList.slice (0, length);
+    list [index] .input = event.target.value;
+    setNoteList (list);
+  };
 
-    let list = noteList.map ((io, index) => {
-        return <>
-            <Note
-                headline = {"#" + (index + 1) .toString ()}
-                focus_p = {index == current}
-                input = {io.input}
-                output = {io.output}
-                onChange = {onChange (index)}
-                onKeyDown = {onKeyDown (index)}
-            />
-        </>
-    });
-
+  let list = noteList.map ((io, index) => {
     return <>
-        {list}
+      <Note
+        headline = {"#" + (index + 1) .toString ()}
+        focus_p = {index == current}
+        input = {io.input}
+        output = {io.output}
+        onChange = {onChange (index)}
+        onKeyDown = {onKeyDown (index)}
+      />
     </>
+  });
+
+  return <>
+    {list}
+  </>
 };
 
 cicada.then (cicada => {
-    ReactDOM.render (
-        <Root cicada = {cicada} />,
-        document.getElementById ("root"));
+  ReactDOM.render (
+    <Root cicada = {cicada} />,
+    document.getElementById ("root"));
 });
