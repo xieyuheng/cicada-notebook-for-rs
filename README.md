@@ -8,5 +8,3 @@ interactive UI of [cicada-rs](https://github.com/xieyuheng/cicada-rs)
 - offline useage `npx webpack-dev-server`
 
 [Online Demo (at surge.sh)](https://cicada-notebook.surge.sh)
-
-![dom-dom](./dom-dom.gif)
