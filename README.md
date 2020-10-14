@@ -1,6 +1,6 @@
-# cicada notebook
+# cicada notebook for rs
 
-interactive UI of [cicada-rs](https://github.com/xieyuheng/cicada-rs)
+Interactive UI for [cicada-rs](https://github.com/xieyuheng/cicada-rs)
 
 - in naked js -- simple and effective
 - wasm in browser -- without server
